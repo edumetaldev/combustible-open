@@ -18,40 +18,40 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home',[App\Http\Controllers\HomeController::class,'index'])->name('home');
 Route::get('/instalar', function(){
     return view('instalar');
 });
 Route::group(['middleware' => 'auth'], function () {
 
   Route::group(['middleware' => 'admin'], function () {
-    Route::resource('usuarios', 'UsuarioController');
-    Route::resource('estaciones', 'EstacionController');
-    Route::resource('cuentacorriente', 'CuentaCorrienteController');
+    Route::resource('usuarios', App\Http\Controllers\UsuarioController::class);
+    Route::resource('estaciones', App\Http\Controllers\EstacionController::class);
+    Route::resource('cuentacorriente', App\Http\Controllers\CuentaCorrienteController::class);
 
-    Route::get('cuentacorriente/transferir/{id}', 'CuentaCorrienteController@transferir');
-    Route::get('cuentacorriente/iniciar/{id}', 'CuentaCorrienteController@iniciar');
-    Route::get('cuentacorriente/depositar/{id}', 'CuentaCorrienteController@depositar');
-    Route::get('cuentacorriente/extraer/{id}', 'CuentaCorrienteController@extraer');
+    Route::get('cuentacorriente/transferir/{id}', [App\Http\Controllers\CuentaCorrienteController::class,'transferir']);
+    Route::get('cuentacorriente/iniciar/{id}', [App\Http\Controllers\CuentaCorrienteController::class,'iniciar']);
+    Route::get('cuentacorriente/depositar/{id}', [App\Http\Controllers\CuentaCorrienteController::class,'depositar']);
+    Route::get('cuentacorriente/extraer/{id}', [App\Http\Controllers\CuentaCorrienteController::class,'extraer']);
   });
 
   Route::group(['middleware' => 'visor_cuentas'], function () {
-    Route::resource('cuentacorriente', 'CuentaCorrienteController');
-    Route::resource('reportes', 'ReporteController');
+    Route::resource('cuentacorriente', App\Http\Controllers\CuentaCorrienteController::class);
+    Route::resource('reportes', App\Http\Controllers\ReporteController::class);
   });
 
   Route::group(['middleware' => ['expendedor']], function () {
-    Route::resource('consumo', 'ConsumoController');
-    Route::get('consumo/ingresar/{id}', 'ConsumoController@ingresar');
-    Route::post('consumo/validar/{id}', 'ConsumoController@validar');
-    Route::get('consumo/verificarusuario/{id}/{monto}', 'ConsumoController@verificarusuario');
-    Route::post('consumo/grabar/{id}/{monto}', 'ConsumoController@grabar');
-    Route::get('expendedor/reportes','ReporteController@porExpendedor');
+    Route::resource('consumo', App\Http\Controllers\ConsumoController::class);
+    Route::get('consumo/ingresar/{id}', [App\Http\Controllers\ConsumoController::class,'ingresar']);
+    Route::post('consumo/validar/{id}', [App\Http\Controllers\ConsumoController::class,'validar']);
+    Route::get('consumo/verificarusuario/{id}/{monto}', [App\Http\Controllers\ConsumoController::class,'verificarusuario']);
+    Route::post('consumo/grabar/{id}/{monto}', [App\Http\Controllers\ConsumoController::class,'grabar']);
+    Route::get('expendedor/reportes',[App\Http\Controllers\ReporteController::class,'porExpendedor']);
   });
 
-  Route::get('micuenta/{id}', 'CuentaCorrienteController@show');
+  Route::get('micuenta/{id}', [App\Http\Controllers\CuentaCorrienteController::class,'show']);
 
-//  Route::post('expendedor/reportes','ReporteController@porExpendedor');
-  Route::get('cambiarclave', 'UsuarioController@cambiarclave');
-  Route::post('cambiarclave', 'UsuarioController@grabarcambiarclave');
+//  Route::post([App\Http\Controllers\expendedor/reportes','ReporteController::class,'porExpendedor']);
+  Route::get('cambiarclave', [App\Http\Controllers\UsuarioController::class,'cambiarclave']);
+  Route::post('cambiarclave', [App\Http\Controllers\UsuarioController::class,'grabarcambiarclave']);
 });

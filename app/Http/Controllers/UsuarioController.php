@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\UsuarioExport;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Maatwebsite\Excel\Facades\Excel;
@@ -35,14 +36,15 @@ class UsuarioController extends Controller
       }
 
       if (request('excel')){
-        $query = $query->select('u.dni as DNI','u.nombre as Nombre','u.rol','u.created_at as Registro','u.email as Correo-e','cp.nombre as cuenta','u.oficina');
-        $datos = json_decode( json_encode($query->get()), true);
-        Excel::create('Usuarios', function($excel) use($datos){
-              $excel->sheet('Excelsheet', function($sheet) use($datos){
-                  $sheet->with($datos, null, 'A1', true);
-                  $sheet->setOrientation('landscape');
-              });
-          })->download('xlsx');
+        // $query = $query->select('u.dni as DNI','u.nombre as Nombre','u.rol','u.created_at as Registro','u.email as Correo-e','cp.nombre as cuenta','u.oficina');
+        // $datos = json_decode( json_encode($query->get()), true);
+        // Excel::create('Usuarios', function($excel) use($datos){
+        //       $excel->sheet('Excelsheet', function($sheet) use($datos){
+        //           $sheet->with($datos, null, 'A1', true);
+        //           $sheet->setOrientation('landscape');
+        //       });
+        //   })->download('xlsx');
+        return Excel::download(new UsuarioExport(), 'Usuarios.xlsx');
       }
 
       $perpage = $this->getPaginacion(request('paginacion'));

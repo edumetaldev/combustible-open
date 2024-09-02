@@ -2,21 +2,34 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Estacion;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
 class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
+     *
+     * @return void
      */
-    public function run(): void
+    public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $estacion = Estacion::create([
+          'nombre' => 'YPF',
+          'empresa' => 'YPF'
+        ]);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $estacion = Estacion::create([
+          'nombre' => 'SHELL',
+          'empresa' => 'SHELL'
+        ]);
+
+        $estacion = Estacion::create([
+          'nombre' => 'AXION',
+          'empresa' => 'AXION'
+        ]);
+
+        $this->call(UsersTableSeeder::class);
+        $this->call(CuentaCorrienteTableSeeder::class);
     }
 }

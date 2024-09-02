@@ -88,7 +88,7 @@
 
     <div class="col-md-6">
           @php
-          $cuentas = App\User::where('es_cuenta_principal',true)->get();
+          $cuentas = App\Models\User::where('es_cuenta_principal',true)->get();
         @endphp
         <select id="cuenta_principal_id" name="cuenta_principal_id" class="form-control">
           <option value=""  {{ old('cuenta_principal_id',$usuario->cuenta_principal_id) == '' ? 'selected': '' }} >

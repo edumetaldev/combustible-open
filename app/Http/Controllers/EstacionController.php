@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Estacion;
+use App\Models\Estacion;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 class EstacionController extends Controller
@@ -90,7 +90,7 @@ class EstacionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Estacion  $estacion
+     * @param  \App\Models\Estacion  $estacion
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -102,7 +102,7 @@ class EstacionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Estacion  $estacion
+     * @param  \App\Models\Estacion  $estacion
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -115,7 +115,7 @@ class EstacionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Estacion  $estacion
+     * @param  \App\Models\Estacion  $estacion
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -128,7 +128,7 @@ class EstacionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Estacion  $estacion
+     * @param  \App\Models\Estacion  $estacion
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

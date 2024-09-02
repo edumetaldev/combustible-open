@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Validator;
-use App\CuentaCorriente;
+use App\Models\CuentaCorriente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB as DB;
-use App\User;
+use App\Models\User;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Repositories\Movimiento;
 
@@ -215,7 +215,7 @@ class CuentaCorrienteController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\CuentaCorriente  $cuentaCorriente
+     * @param  \App\Models\CuentaCorriente  $cuentaCorriente
      * @return \Illuminate\Http\Response
      */
     public function show($id)

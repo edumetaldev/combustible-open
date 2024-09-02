@@ -1,6 +1,11 @@
 <?php
+namespace Database\Seeders;
 
+use App\Models\CuentaCorriente;
+use App\Models\User;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use DB;
 
 class CuentaCorrienteTableSeeder extends Seeder
 {
@@ -15,11 +20,11 @@ class CuentaCorrienteTableSeeder extends Seeder
 
         $estacion = DB::table('estaciones')->inRandomOrder()->first();
 
-        $cuentas = App\User::where('es_cuenta_principal',true)->get();
+        $cuentas = User::where('es_cuenta_principal',true)->get();
 
 // deposito inicial
         foreach ($cuentas as $cuenta) {
-            App\CuentaCorriente::create([
+            CuentaCorriente::create([
               'usuario_id' => $cuenta->id,
               'linea' => 1,
               'usuario_id_destino' => null,
@@ -32,9 +37,9 @@ class CuentaCorrienteTableSeeder extends Seeder
               'audi_usuario_id' => 1
             ]);
         }
-                sleep(2);
+                // sleep(2);
 // consumo
-        $cuentas_principales = App\User::where('es_cuenta_principal',true)->get();
+        $cuentas_principales = User::where('es_cuenta_principal',true)->get();
 
         foreach ($cuentas_principales as $cuenta) {
 
@@ -42,7 +47,7 @@ class CuentaCorrienteTableSeeder extends Seeder
               ->latest()
               ->value('saldo');
 
-            App\CuentaCorriente::create([
+            CuentaCorriente::create([
               'usuario_id' => $cuenta->id,
               'linea' => 2,
               'usuario_id_destino' => null,
@@ -56,11 +61,11 @@ class CuentaCorrienteTableSeeder extends Seeder
               'usuario_id_consumidor' =>  DB::table('usuarios')->where([['rol','usuario'],['cuenta_principal_id',$cuenta->id]])->inRandomOrder()->value('id')
             ]);
         }
-sleep(2);
+// sleep(2);
 //
 //transferencia
 //
-       $cuentas = App\User::where('es_cuenta_principal',true)->get();
+       $cuentas = User::where('es_cuenta_principal',true)->get();
 
         foreach ($cuentas as $cuenta) {
 
@@ -76,7 +81,7 @@ sleep(2);
                     ->latest()
                     ->first();
           // egreso
-            App\CuentaCorriente::create([
+            CuentaCorriente::create([
               'usuario_id' => $cuenta_origen->usuario_id,
               'linea' =>  $cuenta_origen->linea + 1,
               'usuario_id_destino' => $cuenta_destino->usuario_id,
@@ -90,7 +95,7 @@ sleep(2);
               'usuario_id_consumidor' =>  null
             ]);
           //ingreso
-            App\CuentaCorriente::create([
+            CuentaCorriente::create([
               'usuario_id' => $cuenta_destino->usuario_id,
               'linea' => $cuenta_destino->linea + 1,
               'usuario_id_destino' => null,
@@ -104,8 +109,5 @@ sleep(2);
               'usuario_id_consumidor' =>  null
             ]);
         }
-
-
-
     }
 }

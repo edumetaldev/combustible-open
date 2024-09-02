@@ -9,7 +9,7 @@
 namespace App\Repositories;
 
 use Illuminate\Support\Facades\DB as DB;
-use App\CuentaCorriente;
+use App\Models\CuentaCorriente;
 
 class Movimiento
 {

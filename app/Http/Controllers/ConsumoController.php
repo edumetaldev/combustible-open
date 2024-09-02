@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\Movimiento;
-use App\User;
+use App\Models\User;
 use Illuminate\Support\Facades\DB as DB;
 
 class ConsumoController extends Controller

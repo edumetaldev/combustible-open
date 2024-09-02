@@ -13,7 +13,7 @@
 
               <div class="input-group-append col-md-3 mb-3">
                 @php
-                  $estaciones = App\Estacion::get();
+                  $estaciones = App\Models\Estacion::get();
                 @endphp
               <select id="estacion_id" name="estacion_id" class="form-control" required>
                 <option value=""  {{ old('estacion_id') == '' ? 'selected': '' }} >

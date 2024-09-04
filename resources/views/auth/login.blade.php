@@ -106,6 +106,10 @@
                             <a href="{{ url('instalar') }}" class="btn btn-success">Instalación Mobil</a>
                         </div>
                     </div>
+
+                </div>
+                <div class="card">
+                    <div class="card-body">Código fuente: <a href="https://github.com/edumetaldev/combustible-open">https://github.com/edumetaldev/combustible-open</a></div>
                 </div>
             </div>
         </div>

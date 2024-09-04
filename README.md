@@ -53,3 +53,6 @@ Con un poco de cambios puede servir como base para otros proyectos donde se mane
 ![Deposito](public/screenshots/ss-2024-09-03-070211.png) 
 ![Detalle](public/screenshots/ss-2024-09-03-070233.png) 
 ![Consumo](public/screenshots/ss-2024-09-03-070250.png)
+![Expendedor](public/screenshots/ss-2024-09-03-232914.png)
+![Expendedor](public/screenshots/ss-2024-09-03-234130.png)
+![Expendedor](public/screenshots/ss-2024-09-03-234146.png)

@@ -14,17 +14,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $estacion = Estacion::create([
+        Estacion::create([
           'nombre' => 'YPF',
           'empresa' => 'YPF'
         ]);
 
-        $estacion = Estacion::create([
+        Estacion::create([
           'nombre' => 'SHELL',
           'empresa' => 'SHELL'
         ]);
 
-        $estacion = Estacion::create([
+        Estacion::create([
           'nombre' => 'AXION',
           'empresa' => 'AXION'
         ]);

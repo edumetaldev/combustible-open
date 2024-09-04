@@ -13,23 +13,28 @@ class UsersTableSeeder extends Seeder
 	 */
 	public function run()
 	{
+		//administrador
 		User::factory(1,[
 			'dni' => '12345678',
 			'email' => 'admin@combustibleMobile.deb',
 			'password' => bcrypt('123456'),
 			'remember_token' => \Str::random(40),
-			'nombre' => 'Eduardo Jerez',
+			'nombre' => 'Administrador',
 			'rol' => 'Administrador',
 			'es_cuenta_principal' => false,
 			'cuenta_principal_id' => null,
 		])->create();
 
+		//expendedores
 		User::factory(1,[
 			'dni' => '99999999',
 			'es_cuenta_principal' => false,
 			'cuenta_principal_id' => null,
 			'rol' => 'expendedor',
 			'estacion_id' => 1,
+			'password' => bcrypt('123456'),
+			'remember_token' => \Str::random(40),
+			'nombre' => 'Expendedor',
 		])->create();
 
 		User::factory(1,[
@@ -38,14 +43,20 @@ class UsersTableSeeder extends Seeder
 			'cuenta_principal_id' => null,
 			'rol' => 'expendedor',
 			'estacion_id' => 2,
+			'password' => bcrypt('123456'),
+			'remember_token' => \Str::random(40),
+			'nombre' => 'Expendedor',
 		])->create();
 
 		User::factory(1,[
 			'dni' => '77777777',
 			'es_cuenta_principal' => false,
 			'cuenta_principal_id' => null,
-			'rol' => 'expendedor',
+			'rol' => 'visor_cuentas',
 			'estacion_id' => 3,
+			'password' => bcrypt('123456'),
+			'remember_token' => \Str::random(40),
+			'nombre' => 'Visor Cuentas',
 		])->create();
 
 		// Crear 10 cuentas principales

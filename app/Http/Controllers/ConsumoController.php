@@ -101,7 +101,7 @@ class ConsumoController extends Controller
 
 
       return redirect()->action(
-        'ConsumoController@verificarusuario', ['id' => $id, 'monto' => $monto]
+        'App\Http\Controllers\ConsumoController@verificarusuario', ['id' => $id, 'monto' => $monto]
       );
     }
 

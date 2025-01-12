@@ -21,7 +21,7 @@ class UserFactory extends Factory
             'email' => $this->faker->unique()->safeEmail,
             'password' => bcrypt('1234'), // secret
             'remember_token' => \Str::random(10),
-            'rol' => $this->faker->randomElement(['usuario' ,'expendedor','administrador']),
+            'rol' => $this->faker->randomElement(['usuario' ,'expendedor','Administrador']),
             'nombre' => $this->faker->name,
             'comentarios' => '',
             'es_cuenta_principal' => false,

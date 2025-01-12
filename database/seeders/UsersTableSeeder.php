@@ -20,7 +20,7 @@ class UsersTableSeeder extends Seeder
 			'password' => bcrypt('123456'),
 			'remember_token' => \Str::random(40),
 			'nombre' => 'Administrador',
-			'rol' => 'Administrador',
+			'rol' => 'administrador',
 			'es_cuenta_principal' => false,
 			'cuenta_principal_id' => null,
 		])->create();

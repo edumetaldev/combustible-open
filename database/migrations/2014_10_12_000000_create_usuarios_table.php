@@ -16,14 +16,14 @@ class CreateUsuariosTable extends Migration
         Schema::create('usuarios', function (Blueprint $table) {
             $table->increments('id');
             $table->string('dni')->unique();
-            $table->string('email')->unique()->nulleable();
+            $table->string('email')->unique()->nullable();
             $table->string('password');
             $table->enum('rol',['administrador','usuario','expendedor','cuenta_principal']);
             $table->string('nombre',200);
-            $table->string('comentarios',200)->nulleable('');
-            $table->integer('cuenta_principal_id')->nulleable()->unsigned();
+            $table->string('comentarios',200)->nullable();
+            $table->integer('cuenta_principal_id')->nullable()->unsigned();
             $table->boolean('es_cuenta_principal')->default(false);
-            $table->unsignedinteger('estacion_id')->default(null)->nulleable();
+            $table->foreignId('estacion_id')->default(null)->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

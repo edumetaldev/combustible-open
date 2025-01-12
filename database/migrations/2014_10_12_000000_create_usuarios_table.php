@@ -19,9 +19,10 @@ class CreateUsuariosTable extends Migration
             $table->string('dni')->unique();
             $table->string('email')->unique()->nullable();
             $table->string('password');
-            $table->enum('rol',['administrador','usuario','expendedor','cuenta_principal']);
+            $table->enum('rol',['administrador','usuario','expendedor','cuenta_principal','cuenta_consumo','visor_cuentas'])->default('usuario');
             $table->string('nombre',200);
             $table->string('comentarios',200)->nullable();
+            $table->string('oficina',200)->nullable();
             $table->integer('cuenta_principal_id')->nullable()->unsigned();
             $table->boolean('es_cuenta_principal')->default(false);
             $table->foreignId('estacion_id')->default(null)->nullable();

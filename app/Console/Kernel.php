@@ -12,7 +12,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('db:wipe')->monthly();
+        $schedule->command('migrate --seed')->monthly();
     }
 
     /**
@@ -20,11 +21,8 @@ class Kernel extends ConsoleKernel
      */
     protected function commands(): void
     {
-        $this->load(__DIR__.'/Commands');
-
+        $this->load(__DIR__.'/Commands');S
         require base_path('routes/console.php');
 
-        $schedule->command('db:wipe')->monthly();
-        $schedule->command('migrate --seed')->monthly();
     }
 }
